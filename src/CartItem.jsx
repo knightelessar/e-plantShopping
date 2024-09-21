@@ -25,14 +25,16 @@ const handleCheckoutShopping = (e) => {
 };
 
   const handleIncrement = (item) => {
-    dispatch(updateQuantity(item.name, item.quantity + 1));
+    dispatch(updateQuantity({name: item.name, quantity: item.quantity + 1}));
   };
 
+    // Use the single JSON object to pass multiple arguments through redux toolkit
+  // https://stackoverflow.com/questions/71778940/redux-toolkit-reducer-with-multiple-parameters-redux-toolkit
   const handleDecrement = (item) => {
     if (item.quantity === 1) {
         dispatch(removeItem(item.name));
     } else {
-    dispatch(updateQuantity(item.name, item.quantity - 1));
+    dispatch(updateQuantity({name: item.name, quantity: item.quantity - 1}));
     };
   };
 
